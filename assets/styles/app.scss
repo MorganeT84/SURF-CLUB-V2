@@ -1,0 +1,22 @@
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    background-image: url("/public/images/bg-body.jpeg");
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.main {
+    width: 90%;
+    margin: auto;
+    font-size: 1.2em;
+    flex-grow: 1;
+}
+
+h1 {
+    padding-top: 1em;
+    text-align: center;
+    color: white !important;
+}
