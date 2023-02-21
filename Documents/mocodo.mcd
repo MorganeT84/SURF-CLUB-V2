@@ -1,0 +1,25 @@
+administration: id, slug, pseudo, picture
+2 have_right, 0N administration, 0N user
+:
+:
+
+have_right, 0N instructor, 0N user
+user: id, slug, pseudo, roles, mail, password
+3 have_right, 0N member, 0N user
+:
+
+instructor: id, slug, firstname, lastname, picture
+directed_by, 0N coaching, 0N instructor
+member: id, slug, firstname, lastname, picture
+member_has_level, 11 member, 0N level
+
+:
+coaching: id, slug, title, spot, description, daytime, daytimeEnd, picture
+inscription_to, 0N coaching, 0N member
+level: id, slug, name
+:
+
+level_coaching, 0N coaching, 0N level
+
+category: id, slug, name
+session of, 0N coaching, 01 category
