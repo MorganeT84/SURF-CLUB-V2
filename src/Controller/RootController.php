@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RootController extends AbstractController
 {
-   // #[Route('/{reactRouting}', name: 'app_root', default: '?')]
+   // #[Route('/{reactRouting}', name: 'app_root', default: "reactRouting": null )]
      /**
      * @Route("/{reactRouting}", name="app_root", defaults={"reactRouting": null})
      */
