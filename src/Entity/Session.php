@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SessionRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -25,11 +26,11 @@ class Session
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $dayTime = null;
+    #[ORM\Column]
+    private ?\DateTimeImmutable $dayTime = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $dayTimeEnd = null;
+    #[ORM\Column]
+    private ?\DateTimeImmutable $dayTimeEnd = null;
 
     #[ORM\Column(length: 255)]
     private ?string $picture = null;
@@ -55,6 +56,14 @@ class Session
     public function __construct()
     {
         $this->level = new ArrayCollection();
+
+        // adding a new date for each new object, corresponding to the flush date
+        $this->createdAt = new DateTimeImmutable();
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 
     public function getId(): ?int
@@ -98,24 +107,24 @@ class Session
         return $this;
     }
 
-    public function getDayTime(): ?\DateTimeInterface
+    public function getDayTime(): ?\DateTimeImmutable
     {
         return $this->dayTime;
     }
 
-    public function setDayTime(\DateTimeInterface $dayTime): self
+    public function setDayTime(\DateTimeImmutable $dayTime): self
     {
         $this->dayTime = $dayTime;
 
         return $this;
     }
 
-    public function getDayTimeEnd(): ?\DateTimeInterface
+    public function getDayTimeEnd(): ?\DateTimeImmutable
     {
         return $this->dayTimeEnd;
     }
 
-    public function setDayTimeEnd(?\DateTimeInterface $dayTimeEnd): self
+    public function setDayTimeEnd(?\DateTimeImmutable $dayTimeEnd): self
     {
         $this->dayTimeEnd = $dayTimeEnd;
 

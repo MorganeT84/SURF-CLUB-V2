@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SpotRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -37,6 +38,14 @@ class Spot
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
+
+        // adding a new date for each new object, corresponding to the flush date
+        $this->createdAt = new DateTimeImmutable();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
