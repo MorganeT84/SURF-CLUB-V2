@@ -1,11 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'api/v1/baseBackoffice.html.twig' %}
 
-{% block title %}New Session{% endblock %}
+{% block title %}New Session
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Session</h1>
 
-    {{ include('api/v1/session/_form.html.twig') }}
+	<div class="main">
+		<h1>Create new Session</h1>
 
-    <a href="{{ path('app_api_v1_session_index') }}">back to list</a>
-{% endblock %}
+		{{ include('api/v1/session/_form.html.twig') }}
+
+		<a href="{{ path('app_api_v1_session_index') }}">back to list</a>
+	{% endblock %}

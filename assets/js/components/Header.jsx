@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { a } from 'react-router-dom';
 
-import './header.scss';
+import '../components/Header/header.scss';
 
 class Header extends Component {
 
@@ -9,9 +9,9 @@ class Header extends Component {
     return (
       <header className='navbar-header'>
         <div className='div-img'>
-          <Link to={"/"}>
+          <a href='/'>
             <img src='/images/logo-absc.png' title='Logo du club ABSC 66' alt='Logo du club ABSC 66' />
-          </Link>
+          </a>
           <p>Association <br /> des bodyboardeurs,<br /> paddlers et surfeurs catalans</p>
         </div>
 
@@ -28,22 +28,22 @@ class Header extends Component {
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link className={"navbar-brand"} to={"/"}>Accueil</Link>
+                  <a className={"navbar-brand"} to={"/"}>Accueil</a>
                 </li>
                 <li className="nav-item">
-                  <Link className={"nav-link"} to={"/sessions"}>Sessions</Link>
+                  <a className={"nav-a"} to={"/sessions"}>Sessions</a>
                 </li>
                 <li className="nav-item">
-                  <Link className={"nav-link"} to={"/Team"}>Team</Link>
+                  <a className={"nav-a"} to={"/Team"}>Team</a>
                 </li>
                 <li className="nav-item">
-                  <Link className={"nav-link"} to={"/spots"}>Spots</Link>
+                  <a className={"nav-a"} to={"/spots"}>Spots</a>
                 </li>
                 <li className="nav-item">
-                  <Link className={"nav-link"} to={"/surf-camps"}>Surf-camps</Link>
+                  <a className={"nav-a"} to={"/surf-camps"}>Surf-camps</a>
                 </li>
                 <li className="nav-item">
-                  <Link className={"nav-link"} to={"/contact"}>Contact</Link>
+                  <a className={"nav-a"} to={"/contact"}>Contact</a>
                 </li>
 
               </ul>

@@ -1,38 +1,41 @@
-{% extends 'base.html.twig' %}
+{% extends 'api/v1/baseBackoffice.html.twig' %}
 
-{% block title %}Level{% endblock %}
+{% block title %}Level
+{% endblock %}
 
 {% block body %}
-    <h1>Level</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ level.id }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ level.slug }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ level.name }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ level.createdAt ? level.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ level.updatedAt ? level.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<div class="main">
+		<h1>Level</h1>
 
-    <a href="{{ path('app_api_v1_level_index') }}">back to list</a>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ level.id }}</td>
+				</tr>
+				<tr>
+					<th>Slug</th>
+					<td>{{ level.slug }}</td>
+				</tr>
+				<tr>
+					<th>Name</th>
+					<td>{{ level.name }}</td>
+				</tr>
+				<tr>
+					<th>CreatedAt</th>
+					<td>{{ level.createdAt ? level.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+				</tr>
+				<tr>
+					<th>UpdatedAt</th>
+					<td>{{ level.updatedAt ? level.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <a href="{{ path('app_api_v1_level_edit', {'id': level.id}) }}">edit</a>
+		<a href="{{ path('app_api_v1_level_index') }}">back to list</a>
 
-    {{ include('api/v1/level/_delete_form.html.twig') }}
-{% endblock %}
+		<a href="{{ path('app_api_v1_level_edit', {'id': level.id}) }}">edit</a>
+
+		{{ include('api/v1/level/_delete_form.html.twig') }}
+	{% endblock %}

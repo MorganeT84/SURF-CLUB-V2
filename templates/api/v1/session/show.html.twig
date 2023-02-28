@@ -1,58 +1,61 @@
-{% extends 'base.html.twig' %}
+{% extends 'api/v1/baseBackoffice.html.twig' %}
 
-{% block title %}Session{% endblock %}
+{% block title %}Session
+{% endblock %}
 
 {% block body %}
-    <h1>Session</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ session.id }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ session.slug }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ session.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ session.description }}</td>
-            </tr>
-            <tr>
-                <th>DayTime</th>
-                <td>{{ session.dayTime ? session.dayTime|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DayTimeEnd</th>
-                <td>{{ session.dayTimeEnd ? session.dayTimeEnd|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>{{ session.picture }}</td>
-            </tr>
-            <tr>
-                <th>NumberOfPlace</th>
-                <td>{{ session.numberOfPlace }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ session.createdAt ? session.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ session.updatedAt ? session.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<div class="main">
+		<h1>Session</h1>
 
-    <a href="{{ path('app_api_v1_session_index') }}">back to list</a>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ session.id }}</td>
+				</tr>
+				<tr>
+					<th>Slug</th>
+					<td>{{ session.slug }}</td>
+				</tr>
+				<tr>
+					<th>Title</th>
+					<td>{{ session.title }}</td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<td>{{ session.description }}</td>
+				</tr>
+				<tr>
+					<th>DayTime</th>
+					<td>{{ session.dayTime ? session.dayTime|date('Y-m-d') : '' }}</td>
+				</tr>
+				<tr>
+					<th>DayTimeEnd</th>
+					<td>{{ session.dayTimeEnd ? session.dayTimeEnd|date('Y-m-d') : '' }}</td>
+				</tr>
+				<tr>
+					<th>Picture</th>
+					<td>{{ session.picture }}</td>
+				</tr>
+				<tr>
+					<th>NumberOfPlace</th>
+					<td>{{ session.numberOfPlace }}</td>
+				</tr>
+				<tr>
+					<th>CreatedAt</th>
+					<td>{{ session.createdAt ? session.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+				</tr>
+				<tr>
+					<th>UpdatedAt</th>
+					<td>{{ session.updatedAt ? session.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <a href="{{ path('app_api_v1_session_edit', {'id': session.id}) }}">edit</a>
+		<a href="{{ path('app_api_v1_session_index') }}">back to list</a>
 
-    {{ include('api/v1/session/_delete_form.html.twig') }}
-{% endblock %}
+		<a href="{{ path('app_api_v1_session_edit', {'id': session.id}) }}">edit</a>
+
+		{{ include('api/v1/session/_delete_form.html.twig') }}
+	{% endblock %}

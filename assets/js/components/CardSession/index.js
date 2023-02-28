@@ -10,8 +10,8 @@ export const CardSession = () => {
         <div className='card-body'>
           <h5 className='card-title'>Sessions Surf</h5>
           <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary" type="button">Go it !</button>
+          <div className="d-grid gap-2 col-6 mx-auto">
+            <button className="btn btn-primary" type="button">Go it !</button>
           </div>
         </div>
       </div>
@@ -21,8 +21,8 @@ export const CardSession = () => {
         <div className='card-body'>
           <h5 className='card-title'>Sessions Paddle</h5>
           <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary" type="button">Go it !</button>
+          <div className="d-grid gap-2 col-6 mx-auto">
+            <button className="btn btn-primary" type="button">Go it !</button>
           </div>
         </div>
       </div>
@@ -32,8 +32,8 @@ export const CardSession = () => {
         <div className='card-body'>
           <h5 className='card-title'>Sessions Yoga</h5>
           <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary" type="button">Go it !</button>
+          <div className="d-grid gap-2 col-6 mx-auto">
+            <button className="btn btn-primary" type="button">Go it !</button>
           </div>
         </div>
       </div>
@@ -43,8 +43,8 @@ export const CardSession = () => {
         <div className='card-body'>
           <h5 className='card-title'>Sessions Yoga/Paddle</h5>
           <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary" type="button">Go it !</button>
+          <div className="d-grid gap-2 col-6 mx-auto">
+            <button className="btn btn-primary" type="button">Go it !</button>
           </div>
         </div>
       </div>

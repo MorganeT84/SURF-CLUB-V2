@@ -1,13 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'api/v1/baseBackoffice.html.twig' %}
 
-{% block title %}Edit Level{% endblock %}
+{% block title %}Edit Level
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Level</h1>
 
-    {{ include('api/v1/level/_form.html.twig', {'button_label': 'Update'}) }}
+	<div class="main">
+		<h1>Edit Level</h1>
 
-    <a href="{{ path('app_api_v1_level_index') }}">back to list</a>
+		{{ include('api/v1/level/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('api/v1/level/_delete_form.html.twig') }}
-{% endblock %}
+		<a href="{{ path('app_api_v1_level_index') }}">back to list</a>
+
+		{{ include('api/v1/level/_delete_form.html.twig') }}
+	{% endblock %}

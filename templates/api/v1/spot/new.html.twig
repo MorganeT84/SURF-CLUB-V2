@@ -1,11 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'api/v1/baseBackoffice.html.twig' %}
 
-{% block title %}New Spot{% endblock %}
+{% block title %}New Spot
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Spot</h1>
 
-    {{ include('api/v1/spot/_form.html.twig') }}
+	<div class="main">
+		<h1>Create new Spot</h1>
 
-    <a href="{{ path('app_api_v1_spot_index') }}">back to list</a>
-{% endblock %}
+		{{ include('api/v1/spot/_form.html.twig') }}
+
+		<a href="{{ path('app_api_v1_spot_index') }}">back to list</a>
+	{% endblock %}
