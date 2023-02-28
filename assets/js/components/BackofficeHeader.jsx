@@ -28,22 +28,22 @@ class Header extends Component {
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className={"navbar-brand"} to={"/"}>Accueil</a>
+                  <a className={"navbar-brand"} href="/" >Accueil</a>
                 </li>
                 <li className="nav-item">
-                  <a className={"nav-a"} to={"/sessions"}>Sessions</a>
+                  <a className={"nav-a"} href="/sessions">Sessions</a>
                 </li>
                 <li className="nav-item">
-                  <a className={"nav-a"} to={"/Team"}>Team</a>
+                  <a className={"nav-a"} href={"/Team"}>Team</a>
                 </li>
                 <li className="nav-item">
-                  <a className={"nav-a"} to={"/spots"}>Spots</a>
+                  <a className={"nav-a"} href={"/spots"}>Spots</a>
                 </li>
                 <li className="nav-item">
-                  <a className={"nav-a"} to={"/surf-camps"}>Surf-camps</a>
+                  <a className={"nav-a"} href={"/surf-camps"}>Surf-camps</a>
                 </li>
                 <li className="nav-item">
-                  <a className={"nav-a"} to={"/contact"}>Contact</a>
+                  <a className={"nav-a"} href={"/contact"}>Contact</a>
                 </li>
 
               </ul>

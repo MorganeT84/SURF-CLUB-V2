@@ -18,11 +18,11 @@
 	<body>
 
 		<div class="app">
-			<div {{ react_component('Header') }}></div>
+			<div {{ react_component('BackofficeHeader') }}></div>
 
 			{% block body %}{% endblock %}
 
-			<div {{ react_component('Footer') }}></div>
+			<div {{ react_component('BackofficeFooter') }}></div>
 		</div>
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
