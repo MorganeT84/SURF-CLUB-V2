@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SpotRepository::class)]
 class Spot
@@ -15,15 +16,19 @@ class Spot
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['backoffice_session_browse', 'backoffice_spot_browse'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['backoffice_session_browse'])]
     private ?string $slug = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['backoffice_session_browse', 'backoffice_spot_browse'])]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['backoffice_session_browse', 'backoffice_spot_browse'])]
     private ?string $place = null;
 
     #[ORM\Column]

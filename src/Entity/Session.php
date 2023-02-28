@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SessionRepository::class)]
 class Session
@@ -15,27 +16,35 @@ class Session
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['backoffice_session_browse'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['backoffice_session_browse'])]
     private ?string $slug = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['backoffice_session_browse'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['backoffice_session_browse'])]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Groups(['backoffice_session_browse'])]
     private ?\DateTimeImmutable $dayTime = null;
 
     #[ORM\Column]
+    #[Groups(['backoffice_session_browse'])]
     private ?\DateTimeImmutable $dayTimeEnd = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['backoffice_session_browse'])]
     private ?string $picture = null;
 
     #[ORM\Column]
+    #[Groups(['backoffice_session_browse'])]
     private ?int $numberOfPlace = null;
 
     #[ORM\Column]
@@ -45,12 +54,15 @@ class Session
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\ManyToMany(targetEntity: Level::class, inversedBy: 'sessions')]
+    #[Groups(['backoffice_session_browse'])]
     private Collection $level;
 
     #[ORM\ManyToOne(inversedBy: 'sessions')]
+    #[Groups(['backoffice_session_browse'])]
     private ?Spot $spot = null;
 
     #[ORM\ManyToOne(inversedBy: 'sessions')]
+    #[Groups(['backoffice_session_browse'])]
     private ?Category $category = null;
 
     public function __construct()

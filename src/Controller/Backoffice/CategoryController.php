@@ -6,14 +6,15 @@ use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin/category')]
+#[Route('/admin/category', name: 'app_backoffice_category_')]
 class CategoryController extends AbstractController
 {
-    #[Route('/', name: 'app_backoffice_category_index', methods: ['GET'])]
+    #[Route('/', name: 'index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository): Response
     {
         return $this->render('backoffice/category/index.html.twig', [
@@ -21,7 +22,16 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_backoffice_category_new', methods: ['GET', 'POST'])]
+    #[Route('/list/member', name: 'browse_member', methods: ['GET'])]
+    public function browseMember(CategoryRepository $categoryRepository): JsonResponse
+    {
+        // listing all category for member
+        $categoryList =  $categoryRepository->findAll();
+
+        return $this->json($categoryList, Response::HTTP_OK, [], ['groups' => 'backoffice_category_browse']);
+    }
+
+    #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
     public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
         $category = new Category();
@@ -40,7 +50,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_backoffice_category_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'show', methods: ['GET'])]
     public function show(Category $category): Response
     {
         return $this->render('backoffice/category/show.html.twig', [
@@ -48,7 +58,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_backoffice_category_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
@@ -66,7 +76,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_backoffice_category_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {

@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
@@ -14,12 +15,15 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['backoffice_session_browse', 'backoffice_category_browse'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['backoffice_session_browse', 'backoffice_category_browse'])]
     private ?string $slug = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['backoffice_session_browse', 'backoffice_category_browse'])]
     private ?string $name = null;
 
     #[ORM\Column]
@@ -29,6 +33,7 @@ class Category
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Session::class)]
+    #[Groups(['backoffice_category_browse'])]
     private Collection $sessions;
 
     public function __construct()
