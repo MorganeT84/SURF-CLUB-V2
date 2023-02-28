@@ -1,4 +1,4 @@
-{% extends 'api/v1/baseBackoffice.html.twig' %}
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
 
 {% block title %}Spot index
 {% endblock %}
@@ -30,8 +30,8 @@
 						<td>{{ spot.createdAt ? spot.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>{{ spot.updatedAt ? spot.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>
-							<a href="{{ path('app_api_v1_spot_show', {'id': spot.id}) }}">show</a>
-							<a href="{{ path('app_api_v1_spot_edit', {'id': spot.id}) }}">edit</a>
+							<a href="{{ path('app_backoffice_spot_show', {'id': spot.id}) }}">show</a>
+							<a href="{{ path('app_backoffice_spot_edit', {'id': spot.id}) }}">edit</a>
 						</td>
 					</tr>
 				{% else %}
@@ -42,5 +42,5 @@
 			</tbody>
 		</table>
 
-		<a href="{{ path('app_api_v1_spot_new') }}">Create new</a>
+		<a href="{{ path('app_backoffice_spot_new') }}">Create new</a>
 	{% endblock %}

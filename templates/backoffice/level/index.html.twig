@@ -1,4 +1,4 @@
-{% extends 'api/v1/baseBackoffice.html.twig' %}
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
 
 {% block title %}Level index
 {% endblock %}
@@ -28,8 +28,8 @@
 						<td>{{ level.createdAt ? level.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>{{ level.updatedAt ? level.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>
-							<a href="{{ path('app_api_v1_level_show', {'id': level.id}) }}">show</a>
-							<a href="{{ path('app_api_v1_level_edit', {'id': level.id}) }}">edit</a>
+							<a href="{{ path('app_backoffice_level_show', {'id': level.id}) }}">show</a>
+							<a href="{{ path('app_backoffice_level_edit', {'id': level.id}) }}">edit</a>
 						</td>
 					</tr>
 				{% else %}
@@ -40,5 +40,5 @@
 			</tbody>
 		</table>
 
-		<a href="{{ path('app_api_v1_level_new') }}">Create new</a>
+		<a href="{{ path('app_backoffice_level_new') }}">Create new</a>
 	{% endblock %}

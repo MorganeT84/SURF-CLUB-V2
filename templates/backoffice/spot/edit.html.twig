@@ -1,0 +1,16 @@
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
+
+{% block title %}Edit Spot
+{% endblock %}
+
+{% block body %}
+
+	<div class="main">
+		<h1>Edit Spot</h1>
+
+		{{ include('Backoffice/spot/_form.html.twig', {'button_label': 'Update'}) }}
+
+		<a href="{{ path('app_backoffice_spot_index') }}">back to list</a>
+
+		{{ include('Backoffice/spot/_delete_form.html.twig') }}
+	{% endblock %}

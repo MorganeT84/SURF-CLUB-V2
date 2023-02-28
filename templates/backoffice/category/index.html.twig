@@ -1,4 +1,4 @@
-{% extends 'api/v1/baseBackoffice.html.twig' %}
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
 
 {% block title %}Category index
 {% endblock %}
@@ -28,8 +28,8 @@
 						<td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>
-							<a href="{{ path('app_api_v1_category_show', {'id': category.id}) }}">show</a>
-							<a href="{{ path('app_api_v1_category_edit', {'id': category.id}) }}">edit</a>
+							<a href="{{ path('app_backoffice_category_show', {'id': category.id}) }}">show</a>
+							<a href="{{ path('app_backoffice_category_edit', {'id': category.id}) }}">edit</a>
 						</td>
 					</tr>
 				{% else %}
@@ -40,5 +40,5 @@
 			</tbody>
 		</table>
 
-		<a href="{{ path('app_api_v1_category_new') }}">Create new</a>
+		<a href="{{ path('app_backoffice_category_new') }}">Create new</a>
 	{% endblock %}

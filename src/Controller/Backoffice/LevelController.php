@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api\V1;
+namespace App\Controller\Backoffice;
 
 use App\Entity\Level;
 use App\Form\LevelType;
@@ -13,15 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/level')]
 class LevelController extends AbstractController
 {
-    #[Route('/', name: 'app_api_v1_level_index', methods: ['GET'])]
+    #[Route('/', name: 'app_backoffice_level_index', methods: ['GET'])]
     public function index(LevelRepository $levelRepository): Response
     {
-        return $this->render('api/v1/level/index.html.twig', [
+        return $this->render('backoffice/level/index.html.twig', [
             'levels' => $levelRepository->findAll(),
         ]);
     }
 
-    #[Route('/new', name: 'app_api_v1_level_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_backoffice_level_new', methods: ['GET', 'POST'])]
     public function new(Request $request, LevelRepository $levelRepository): Response
     {
         $level = new Level();
@@ -31,24 +31,24 @@ class LevelController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $levelRepository->save($level, true);
 
-            return $this->redirectToRoute('app_api_v1_level_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_level_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('api/v1/level/new.html.twig', [
+        return $this->renderForm('backoffice/level/new.html.twig', [
             'level' => $level,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_api_v1_level_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_backoffice_level_show', methods: ['GET'])]
     public function show(Level $level): Response
     {
-        return $this->render('api/v1/level/show.html.twig', [
+        return $this->render('backoffice/level/show.html.twig', [
             'level' => $level,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_api_v1_level_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_backoffice_level_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Level $level, LevelRepository $levelRepository): Response
     {
         $form = $this->createForm(LevelType::class, $level);
@@ -57,22 +57,22 @@ class LevelController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $levelRepository->save($level, true);
 
-            return $this->redirectToRoute('app_api_v1_level_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_level_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('api/v1/level/edit.html.twig', [
+        return $this->renderForm('backoffice/level/edit.html.twig', [
             'level' => $level,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_api_v1_level_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_backoffice_level_delete', methods: ['POST'])]
     public function delete(Request $request, Level $level, LevelRepository $levelRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$level->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $level->getId(), $request->request->get('_token'))) {
             $levelRepository->remove($level, true);
         }
 
-        return $this->redirectToRoute('app_api_v1_level_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_level_index', [], Response::HTTP_SEE_OTHER);
     }
 }

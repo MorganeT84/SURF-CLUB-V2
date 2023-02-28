@@ -1,0 +1,14 @@
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
+
+{% block title %}New Session
+{% endblock %}
+
+{% block body %}
+
+	<div class="main">
+		<h1>Create new Session</h1>
+
+		{{ include('Backoffice/session/_form.html.twig') }}
+
+		<a href="{{ path('app_backoffice_session_index') }}">back to list</a>
+	{% endblock %}

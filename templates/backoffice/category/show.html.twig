@@ -1,4 +1,4 @@
-{% extends 'api/v1/baseBackoffice.html.twig' %}
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
 
 {% block title %}Category
 {% endblock %}
@@ -33,9 +33,9 @@
 			</tbody>
 		</table>
 
-		<a href="{{ path('app_api_v1_category_index') }}">back to list</a>
+		<a href="{{ path('app_backoffice_category_index') }}">back to list</a>
 
-		<a href="{{ path('app_api_v1_category_edit', {'id': category.id}) }}">edit</a>
+		<a href="{{ path('app_backoffice_category_edit', {'id': category.id}) }}">edit</a>
 
-		{{ include('api/v1/category/_delete_form.html.twig') }}
+		{{ include('Backoffice/category/_delete_form.html.twig') }}
 	{% endblock %}

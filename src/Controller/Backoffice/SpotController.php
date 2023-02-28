@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api\V1;
+namespace App\Controller\Backoffice;
 
 use App\Entity\Spot;
 use App\Form\SpotType;
@@ -13,15 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/spot')]
 class SpotController extends AbstractController
 {
-    #[Route('/', name: 'app_api_v1_spot_index', methods: ['GET'])]
+    #[Route('/', name: 'app_backoffice_spot_index', methods: ['GET'])]
     public function index(SpotRepository $spotRepository): Response
     {
-        return $this->render('api/v1/spot/index.html.twig', [
+        return $this->render('backoffice/spot/index.html.twig', [
             'spots' => $spotRepository->findAll(),
         ]);
     }
 
-    #[Route('/new', name: 'app_api_v1_spot_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_backoffice_spot_new', methods: ['GET', 'POST'])]
     public function new(Request $request, SpotRepository $spotRepository): Response
     {
         $spot = new Spot();
@@ -31,24 +31,24 @@ class SpotController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $spotRepository->save($spot, true);
 
-            return $this->redirectToRoute('app_api_v1_spot_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_spot_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('api/v1/spot/new.html.twig', [
+        return $this->renderForm('backoffice/spot/new.html.twig', [
             'spot' => $spot,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_api_v1_spot_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_backoffice_spot_show', methods: ['GET'])]
     public function show(Spot $spot): Response
     {
-        return $this->render('api/v1/spot/show.html.twig', [
+        return $this->render('backoffice/spot/show.html.twig', [
             'spot' => $spot,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_api_v1_spot_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_backoffice_spot_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Spot $spot, SpotRepository $spotRepository): Response
     {
         $form = $this->createForm(SpotType::class, $spot);
@@ -57,22 +57,22 @@ class SpotController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $spotRepository->save($spot, true);
 
-            return $this->redirectToRoute('app_api_v1_spot_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_spot_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('api/v1/spot/edit.html.twig', [
+        return $this->renderForm('backoffice/spot/edit.html.twig', [
             'spot' => $spot,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_api_v1_spot_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_backoffice_spot_delete', methods: ['POST'])]
     public function delete(Request $request, Spot $spot, SpotRepository $spotRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$spot->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $spot->getId(), $request->request->get('_token'))) {
             $spotRepository->remove($spot, true);
         }
 
-        return $this->redirectToRoute('app_api_v1_spot_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_spot_index', [], Response::HTTP_SEE_OTHER);
     }
 }

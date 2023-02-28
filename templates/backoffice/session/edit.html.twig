@@ -1,0 +1,16 @@
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
+{% block title %}Edit Session
+{% endblock %}
+
+{% block body %}
+
+	<div class="main">
+		<h1>Edit Session</h1>
+
+		{{ include('Backoffice/session/_form.html.twig', {'button_label': 'Update'}) }}
+
+		<a href="{{ path('app_backoffice_session_index') }}">back to list</a>
+
+		{{ include('Backoffice/session/_delete_form.html.twig') }}
+	</div>
+{% endblock %}

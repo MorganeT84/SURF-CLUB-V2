@@ -1,4 +1,4 @@
-{% extends 'api/v1/baseBackoffice.html.twig' %}
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
 
 {% block title %}Session index
 {% endblock %}
@@ -37,8 +37,8 @@
 						<td>{{ session.createdAt ? session.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>{{ session.updatedAt ? session.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>
-							<a href="{{ path('app_api_v1_session_show', {'id': session.id}) }}">show</a>
-							<a href="{{ path('app_api_v1_session_edit', {'id': session.id}) }}">edit</a>
+							<a href="{{ path('app_backoffice_session_show', {'id': session.id}) }}">show</a>
+							<a href="{{ path('app_backoffice_session_edit', {'id': session.id}) }}">edit</a>
 						</td>
 					</tr>
 				{% else %}
@@ -49,7 +49,7 @@
 			</tbody>
 		</table>
 
-		<a href="{{ path('app_api_v1_session_new') }}">Create new</a>
+		<a href="{{ path('app_backoffice_session_new') }}">Create new</a>
 	</div>
 
 {% endblock %}

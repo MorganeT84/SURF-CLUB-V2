@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api\V1;
+namespace App\Controller\Backoffice;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
@@ -13,15 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/category')]
 class CategoryController extends AbstractController
 {
-    #[Route('/', name: 'app_api_v1_category_index', methods: ['GET'])]
+    #[Route('/', name: 'app_backoffice_category_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('api/v1/category/index.html.twig', [
+        return $this->render('backoffice/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }
 
-    #[Route('/new', name: 'app_api_v1_category_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_backoffice_category_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
         $category = new Category();
@@ -31,24 +31,24 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->save($category, true);
 
-            return $this->redirectToRoute('app_api_v1_category_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('api/v1/category/new.html.twig', [
+        return $this->renderForm('backoffice/category/new.html.twig', [
             'category' => $category,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_api_v1_category_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_backoffice_category_show', methods: ['GET'])]
     public function show(Category $category): Response
     {
-        return $this->render('api/v1/category/show.html.twig', [
+        return $this->render('backoffice/category/show.html.twig', [
             'category' => $category,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_api_v1_category_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_backoffice_category_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
@@ -57,22 +57,22 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->save($category, true);
 
-            return $this->redirectToRoute('app_api_v1_category_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('api/v1/category/edit.html.twig', [
+        return $this->renderForm('backoffice/category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_api_v1_category_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_backoffice_category_delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category, true);
         }
 
-        return $this->redirectToRoute('app_api_v1_category_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_category_index', [], Response::HTTP_SEE_OTHER);
     }
 }

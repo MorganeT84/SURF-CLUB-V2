@@ -11,7 +11,7 @@ class SessionControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
     private SessionRepository $repository;
-    private string $path = '/api/v1/session/';
+    private string $path = '/Backoffice/session/';
 
     protected function setUp(): void
     {
@@ -58,7 +58,7 @@ class SessionControllerTest extends WebTestCase
             'session[category]' => 'Testing',
         ]);
 
-        self::assertResponseRedirects('/api/v1/session/');
+        self::assertResponseRedirects('/Backoffice/session/');
 
         self::assertSame($originalNumObjectsInRepository + 1, count($this->repository->findAll()));
     }
@@ -126,7 +126,7 @@ class SessionControllerTest extends WebTestCase
             'session[category]' => 'Something New',
         ]);
 
-        self::assertResponseRedirects('/api/v1/session/');
+        self::assertResponseRedirects('/Backoffice/session/');
 
         $fixture = $this->repository->findAll();
 
@@ -172,6 +172,6 @@ class SessionControllerTest extends WebTestCase
         $this->client->submitForm('Delete');
 
         self::assertSame($originalNumObjectsInRepository, count($this->repository->findAll()));
-        self::assertResponseRedirects('/api/v1/session/');
+        self::assertResponseRedirects('/Backoffice/session/');
     }
 }
