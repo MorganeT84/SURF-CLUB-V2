@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
@@ -18,7 +19,8 @@ class Category
     #[Groups(['backoffice_session_browse', 'backoffice_category_browse'])]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length:128, unique:true)]
+    #[Gedmo\Slug(fields: ['name'])]
     #[Groups(['backoffice_session_browse', 'backoffice_category_browse'])]
     private ?string $slug = null;
 
@@ -52,11 +54,6 @@ class Category
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getSlug(): ?string
-    {
-        return $this->slug;
     }
 
     public function setSlug(string $slug): self

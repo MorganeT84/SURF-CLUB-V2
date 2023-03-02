@@ -10,9 +10,7 @@
 
 		<table class="table">
 			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Slug</th>
+				<tr> 
 					<th>Name</th>
 					<th>CreatedAt</th>
 					<th>UpdatedAt</th>
@@ -21,9 +19,7 @@
 			</thead>
 			<tbody>
 				{% for level in levels %}
-					<tr>
-						<td>{{ level.id }}</td>
-						<td>{{ level.slug }}</td>
+					<tr> 
 						<td>{{ level.name }}</td>
 						<td>{{ level.createdAt ? level.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>{{ level.updatedAt ? level.updatedAt|date('Y-m-d H:i:s') : '' }}</td>

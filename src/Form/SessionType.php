@@ -56,15 +56,13 @@ class SessionType extends AbstractType
             ->add('spot', EntityType::class, [
                 'class' => Spot::class,
                 'label' => 'Spot pour la session',
-                'expanded' => true,
-                'multiple' => true,
+                'expanded' => true, 
                 'required' => true,
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'label' => 'categorie',
                 'expanded' => true,
-                'multiple' => true,
                 'required' => true,
             ]);
     }

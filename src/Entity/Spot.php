@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SpotRepository::class)]
@@ -19,7 +20,8 @@ class Spot
     #[Groups(['backoffice_session_browse', 'backoffice_spot_browse'])]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length:128, unique:true)]
+    #[Gedmo\Slug(fields: ['name'])]
     #[Groups(['backoffice_session_browse'])]
     private ?string $slug = null;
 
@@ -42,7 +44,7 @@ class Spot
 
     public function __construct()
     {
-        $this->sessions = new ArrayCollection();
+        //$this->sessions = new ArrayCollection();
 
         // adding a new date for each new object, corresponding to the flush date
         $this->createdAt = new DateTimeImmutable();
@@ -61,13 +63,6 @@ class Spot
     public function getSlug(): ?string
     {
         return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
     }
 
     public function getName(): ?string
