@@ -1,55 +1,81 @@
 {% extends 'Backoffice/baseBackoffice.html.twig' %}
 
-{% block title %}Session index
+{% block title %}Sessions prévus
 {% endblock %}
 
 {% block body %}
 	<div class="main">
-		<h1>Session index</h1>
+		<h1>Sessions</h1>
 
-		<table class="table">
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="#">Tous</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Surf</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Yoga</a>
+			</li>
+					<li class="nav-item">
+				<a class="nav-link" href="#">LINK filter by sport</a>
+			</li>
+		</ul>
+
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_session_new') }}">Nouvelle session</a>
+		</button>
+		<table class="table table-success table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>Id</th>
-					<th>Slug</th>
-					<th>Title</th>
-					<th>Description</th>
-					<th>DayTime</th>
-					<th>DayTimeEnd</th>
-					<th>Picture</th>
-					<th>NumberOfPlace</th>
-					<th>CreatedAt</th>
-					<th>UpdatedAt</th>
+					<th>Sport</th>
+					<th>Nom</th>
+					<th>Lieu</th>
+					<th>Niveau</th>
+					<th>Date</th>
+					<th>Horaire</th>
+					<th>Inscrit</th>
 					<th>actions</th>
 				</tr>
 			</thead>
+
 			<tbody>
 				{% for session in sessions %}
 					<tr>
-						<td>{{ session.id }}</td>
-						<td>{{ session.slug }}</td>
+						<td>{{session.category.name}}</td>
 						<td>{{ session.title }}</td>
-						<td>{{ session.description }}</td>
-						<td>{{ session.dayTime ? session.dayTime|date('Y-m-d') : '' }}</td>
-						<td>{{ session.dayTimeEnd ? session.dayTimeEnd|date('Y-m-d') : '' }}</td>
-						<td>{{ session.picture }}</td>
-						<td>{{ session.numberOfPlace }}</td>
-						<td>{{ session.createdAt ? session.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-						<td>{{ session.updatedAt ? session.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+						<td>{{ session.spot.name}}</td>
 						<td>
-							<a href="{{ path('app_backoffice_session_show', {'id': session.id}) }}">show</a>
-							<a href="{{ path('app_backoffice_session_edit', {'id': session.id}) }}">edit</a>
+							<ul>
+								{% for level in session.level %}
+									<li>{{level}}</li>
+								{% endfor %}
+							</ul>
+						</td>
+						<td>{{ session.dayTime ? session.dayTime|format_datetime('full', 'none', locale='fr') }}
+						</td>
+						<td>{{ session.dayTime ? session.dayTime|date('H:i') : '' }}
+							à
+							{{ session.dayTimeEnd ? session.dayTimeEnd|date('H:i') : '' }}</td>
+						<td>nb inscrit / {{ session.numberOfPlace }}</td>
+						<td>
+							<button type="button" class="btn btn-info">
+								<a href="{{ path('app_backoffice_session_show', {'id': session.id}) }}">Info</a>
+							</button>
+							<button type="button" class="btn btn-danger">
+								<a href="{{ path('app_backoffice_session_edit', {'id': session.id}) }}">Modifier</a>
+							</button>
+
 						</td>
 					</tr>
 				{% else %}
 					<tr>
-						<td colspan="11">no records found</td>
+						<td colspan="7">pas de sessions prévu</td>
 					</tr>
 				{% endfor %}
 			</tbody>
 		</table>
 
-		<a href="{{ path('app_backoffice_session_new') }}">Create new</a>
 	</div>
 
 {% endblock %}

@@ -16,7 +16,7 @@ class SessionController extends AbstractController
 {
 
     #[Route('/', name: 'index', methods: ['GET'])]
-    public function index(SessionRepository $sessionRepository): Response
+    public function browse(SessionRepository $sessionRepository): Response
     {
         return $this->render('backoffice/session/index.html.twig', [
             'sessions' => $sessionRepository->findAll(),
@@ -36,10 +36,10 @@ class SessionController extends AbstractController
     public function new(Request $request, SessionRepository $sessionRepository): Response
     {
         $session = new Session();
-        $form = $this->createForm(SessionType::class, $session);
-        $form->handleRequest($request);
+        $sessionForm = $this->createForm(SessionType::class, $session);
+        $sessionForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($sessionForm->isSubmitted() && $sessionForm->isValid()) {
             $sessionRepository->save($session, true);
 
             return $this->redirectToRoute('app_backoffice_session_index', [], Response::HTTP_SEE_OTHER);
@@ -47,7 +47,7 @@ class SessionController extends AbstractController
 
         return $this->renderForm('backoffice/session/new.html.twig', [
             'session' => $session,
-            'form' => $form,
+            'session_form' => $sessionForm,
         ]);
     }
 
@@ -62,10 +62,10 @@ class SessionController extends AbstractController
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Session $session, SessionRepository $sessionRepository): Response
     {
-        $form = $this->createForm(SessionType::class, $session);
-        $form->handleRequest($request);
+        $sessionForm = $this->createForm(SessionType::class, $session);
+        $sessionForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($sessionForm->isSubmitted() && $sessionForm->isValid()) {
             $sessionRepository->save($session, true);
 
             return $this->redirectToRoute('session_index', [], Response::HTTP_SEE_OTHER);
@@ -73,7 +73,7 @@ class SessionController extends AbstractController
 
         return $this->renderForm('backoffice/session/edit.html.twig', [
             'session' => $session,
-            'form' => $form,
+            'session_form' => $sessionForm,
         ]);
     }
 
