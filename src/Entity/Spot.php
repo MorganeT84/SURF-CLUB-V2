@@ -20,7 +20,7 @@ class Spot
     #[Groups(['backoffice_session_browse', 'backoffice_spot_browse'])]
     private ?int $id = null;
 
-    #[ORM\Column(length:128, unique:true)]
+    #[ORM\Column(length: 128, unique: true)]
     #[Gedmo\Slug(fields: ['name'])]
     #[Groups(['backoffice_session_browse'])]
     private ?string $slug = null;

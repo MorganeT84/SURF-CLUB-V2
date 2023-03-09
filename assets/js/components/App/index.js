@@ -35,4 +35,3 @@ class App extends Component {
 };
 
 export default App;
-  //** <Route path="/sessions" element={<Coaching />} /> */

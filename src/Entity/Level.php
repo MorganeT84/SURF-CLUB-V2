@@ -55,11 +55,9 @@ class Level
         return $this->id;
     }
 
-    public function setSlug(string $slug): self
+    public function getSlug(): ?string
     {
-        $this->slug = $slug;
-
-        return $this;
+        return $this->slug;
     }
 
     public function getName(): ?string

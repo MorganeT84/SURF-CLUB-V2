@@ -1,6 +1,6 @@
 {% extends 'Backoffice/baseBackoffice.html.twig' %}
 
-{% block title %}Session
+{% block title %}{{ session.title }}
 {% endblock %}
 
 {% block body %}
@@ -34,14 +34,15 @@
 				<p>nb inscrit /
 					{{ session.numberOfPlace }}</p>
 				<img src={{ session.picture }} class="card-img-bottom" alt="...">
-			</div>
-
 			<button type="button" class="btn btn-warning">
 				<a href="{{ path('app_backoffice_session_edit', {'id': session.id}) }}">Modifier</a>
 			</button>
 
 			{{ include('Backoffice/session/_delete_form.html.twig') }}
+			</div>
+
 		</div>
 
 
 	{% endblock %}
+ 

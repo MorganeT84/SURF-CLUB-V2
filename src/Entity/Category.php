@@ -19,7 +19,7 @@ class Category
     #[Groups(['backoffice_session_browse', 'backoffice_category_browse'])]
     private ?int $id = null;
 
-    #[ORM\Column(length:128, unique:true)]
+    #[ORM\Column(length: 128, unique: true)]
     #[Gedmo\Slug(fields: ['name'])]
     #[Groups(['backoffice_session_browse', 'backoffice_category_browse'])]
     private ?string $slug = null;
@@ -56,11 +56,9 @@ class Category
         return $this->id;
     }
 
-    public function setSlug(string $slug): self
+    public function getSlug(): ?string
     {
-        $this->slug = $slug;
-
-        return $this;
+        return $this->slug;
     }
 
     public function getName(): ?string

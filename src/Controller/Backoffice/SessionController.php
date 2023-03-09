@@ -68,7 +68,7 @@ class SessionController extends AbstractController
         if ($sessionForm->isSubmitted() && $sessionForm->isValid()) {
             $sessionRepository->save($session, true);
 
-            return $this->redirectToRoute('session_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_session_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/session/edit.html.twig', [

@@ -68,20 +68,14 @@ export default function Sessions() {
               <Card.Body>
                 <Card.Title>{session.title}</Card.Title>
                 <Card.Img variant="top" src={session.picture} />
-                <Card.Text>
-                  <p>{session.description}</p>
+                <Card.Text> {session.description}</Card.Text>
+                <Card.Text>{session.spot.place}</Card.Text>
+                <Card.Text>{session.numberOfPlace} personnes max</Card.Text>
+                {session.level.map(level =>
+                  <Card.Text key={level.id}> {level.name}</Card.Text>
+                )}
+                {session.level.name}
 
-                  <p>{session.spot.place}</p>
-                </Card.Text>
-                <Card.Text>
-                  {session.numberOfPlace} personnes max
-                </Card.Text>
-                <Card.Text> 
-                    {session.level.map(level =>
-                      <p>{level.name}</p>
-                    )} 
-                  {session.level.name}
-                </Card.Text>
               </Card.Body>
               <Card.Footer className="text-muted">
                 <Button variant="primary">Réserver</Button>
