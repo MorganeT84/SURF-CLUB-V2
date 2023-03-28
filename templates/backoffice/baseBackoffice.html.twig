@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang='fr_FR'>
+<html>
 	<head>
 		<meta charset="UTF-8">
-		<meta httpEquiv="X-UA-Compatible" content="IE=edge">
-		<meta name="language" content="fr">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
 		{% block stylesheets %}
-		
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
@@ -19,7 +15,14 @@
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	</head>
 	<body>
-		{% block body %}{% endblock %}
+
+		<div class="app">
+			<div {{ react_component('BackofficeHeader') }}></div>
+
+			{% block body %}{% endblock %}
+
+			<div {{ react_component('BackofficeFooter') }}></div>
+		</div>
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}

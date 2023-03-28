@@ -1,0 +1,46 @@
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
+
+{% block title %}Liste des spots
+{% endblock %}
+
+{% block body %}
+
+	<div class="main">
+		<h1>Liste des spots</h1>
+
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_session_index') }}">Retour session</a>
+		</button>
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_spot_new') }}">Nouveau spot</a>
+		</button>
+		<table class="table table-light table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Place</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for spot in spots %}
+					<tr>
+						<td>{{ spot.name }}</td>
+						<td>{{ spot.place }}</td>
+						<td>
+							<button type="button" class="btn btn-info">
+								<a href="{{ path('app_backoffice_spot_show', {'id': spot.id}) }}">info</a>
+							</button>
+							<button type="button" class="btn btn-danger">
+								<a href="{{ path('app_backoffice_spot_edit', {'id': spot.id}) }}">Modifier</a>
+							</button>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endblock %}

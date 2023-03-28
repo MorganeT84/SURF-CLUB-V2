@@ -1,0 +1,16 @@
+<div class="card mb-3">
+	{{form_start(session_form)}}
+	<div>{{ form_row(session_form.title) }}</div>
+	<div>{{ form_row(session_form.category) }}</div>
+	<div>{{ form_row(session_form.description) }}</div>
+	<div>{{ form_row(session_form.numberOfPlace) }}</div>
+	<div>{{ form_row(session_form.level) }}</div>
+	<div>{{ form_row(session_form.spot) }}</div>
+    <div>{{ form_row(session_form.picture) }}</div>
+	<div>{{ form_row(session_form.dayTime ) }}
+		{{ form_row(session_form.dayTimeEnd ) }}</div>
+
+	<button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+	{{ form_end(session_form) }}
+
+</div>

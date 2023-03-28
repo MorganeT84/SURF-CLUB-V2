@@ -1,0 +1,16 @@
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
+
+{% block title %}New Category
+{% endblock %}
+
+{% block body %}
+
+	<div class="main">
+		<h1>Create new Category</h1>
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_category_index') }}">Retour à la liste</a>
+		</button>
+
+		{{ include('Backoffice/category/_form.html.twig') }}
+ 
+	{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
+{% block title %}Modifier Session {{session.title}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="main">
+		<h1>Modifier {{session.title}}</h1>
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_session_index') }}">Retour à la liste</a>
+		</button>
+
+		{{ include('Backoffice/session/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+		{{ include('Backoffice/session/_delete_form.html.twig') }}
+	</div>
+{% endblock %}

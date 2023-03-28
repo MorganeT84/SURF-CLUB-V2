@@ -1,0 +1,46 @@
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
+
+{% block title %}Liste des niveaux
+{% endblock %}
+
+{% block body %}
+
+	<div class="main">
+		<h1>Liste des niveaux</h1>
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_session_index') }}">Retour Session</a>
+		</button>
+
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_level_new') }}">Nouveau niveau</a>
+		</button>
+
+		<table class="table table-light table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for level in levels %}
+					<tr>
+						<td>{{ level.name }}</td>
+						<td>
+							<button type="button" class="btn btn-info">
+								<a href="{{ path('app_backoffice_level_show', {'id': level.id}) }}">Info</a>
+							</button>
+							<button type="button" class="btn btn-danger">
+								<a href="{{ path('app_backoffice_level_edit', {'id': level.id}) }}">Modifier</a>
+							</button>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	{% endblock %}

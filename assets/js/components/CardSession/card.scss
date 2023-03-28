@@ -1,12 +1,22 @@
 .card-session {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   margin: 2em 0;
 
   .card {
     width: 18rem;
     margin: 1em;
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      .btn {
+        margin-top: 1em;
+      }
+    }
   }
 }

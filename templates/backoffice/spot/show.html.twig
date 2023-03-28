@@ -1,0 +1,35 @@
+{% extends 'Backoffice/baseBackoffice.html.twig' %}
+
+{% block title %}Spot
+{% endblock %}
+
+{% block body %}
+
+	<div class="main">
+		<h1>Spot</h1>
+
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_session_index') }}">Retour Session</a>
+		</button>
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_spot_index') }}">Retour à la liste</a>
+		</button>
+
+		<table class="table table-light table-bordered table-hover">
+			<tbody>
+				<tr>
+					<th>Name</th>
+					<td>{{ spot.name }}</td>
+				</tr>
+				<tr>
+					<th>Place</th>
+					<td>{{ spot.place }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<button type="button" class="btn btn-info">
+			<a href="{{ path('app_backoffice_spot_edit', {'id': spot.id}) }}">Modifier</a>
+		</button>
+		{{ include('Backoffice/spot/_delete_form.html.twig') }}
+	{% endblock %}
