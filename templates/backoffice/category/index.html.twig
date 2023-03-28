@@ -1,33 +1,38 @@
 {% extends 'Backoffice/baseBackoffice.html.twig' %}
 
-{% block title %}Category index
+{% block title %}Liste des disciplines
 {% endblock %}
 
 {% block body %}
 
 	<div class="main">
-		<h1>Category index</h1>
+		<h1>Liste des disciplines</h1>
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_session_index') }}">Retour Session</a>
+		</button>
 
-		<table class="table">
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_category_new') }}">Nouvelle discipline</a>
+		</button>
+
+		<table class="table table-light table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>Id</th> 
 					<th>Name</th>
-					<th>CreatedAt</th>
-					<th>UpdatedAt</th>
 					<th>actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for category in categories %}
 					<tr>
-						<td>{{ category.id }}</td> 
 						<td>{{ category.name }}</td>
-						<td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-						<td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>
-							<a href="{{ path('app_backoffice_category_show', {'id': category.id}) }}">show</a>
-							<a href="{{ path('app_backoffice_category_edit', {'id': category.id}) }}">edit</a>
+							<button type="button" class="btn btn-info">
+								<a href="{{ path('app_backoffice_category_show', {'id': category.id}) }}">Info</a>
+							</button>
+							<button type="button" class="btn btn-danger">
+								<a href="{{ path('app_backoffice_category_edit', {'id': category.id}) }}">Modifier</a>
+							</button>
 						</td>
 					</tr>
 				{% else %}
@@ -37,6 +42,5 @@
 				{% endfor %}
 			</tbody>
 		</table>
-
-		<a href="{{ path('app_backoffice_category_new') }}">Create new</a>
+ 
 	{% endblock %}

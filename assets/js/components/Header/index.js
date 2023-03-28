@@ -18,6 +18,9 @@ class Header extends Component {
         <div className='connect'>
           <p>Salut Bro!</p>
           <button type="button" className="btn btn-danger">Se déconnecter</button>
+          <button type="button" class="btn btn-warning">
+            <Link to={"/admin/session/"}>Gestion Club</Link>
+          </button>
         </div>
 
         <nav className="navbar navbar-expand-lg bg-body-tertiary">

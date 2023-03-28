@@ -12,9 +12,14 @@ class LevelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('sessions')
-        ;
+            ->add('name', null, [
+                'label' => 'Le nom du niveau *',
+                'attr' => [
+                    'placeholder' => 'saisir du niveau',
+                    'class' => 'form-control',
+                ],
+                'required' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

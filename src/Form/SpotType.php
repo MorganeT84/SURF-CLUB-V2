@@ -12,8 +12,22 @@ class SpotType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('place')
+            ->add('name', null, [
+                'label' => 'Le nom du spot *',
+                'attr' => [
+                    'placeholder' => 'saisir le nom du spot',
+                    'class' => 'form-control',
+                ],
+                'required' => true,
+            ])
+            ->add('place', null, [
+                'label' => 'Adresse *',
+                'attr' => [
+                    'placeholder' => 'saisir l\'adresse du spot',
+                    'class' => 'form-control info',
+                ],
+                'required' => true,
+            ])
         ;
     }
 

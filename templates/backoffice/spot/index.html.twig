@@ -1,37 +1,39 @@
 {% extends 'Backoffice/baseBackoffice.html.twig' %}
 
-{% block title %}Spot index
+{% block title %}Liste des spots
 {% endblock %}
 
 {% block body %}
 
 	<div class="main">
-		<h1>Spot index</h1>
+		<h1>Liste des spots</h1>
 
-		<table class="table">
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_session_index') }}">Retour session</a>
+		</button>
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_spot_new') }}">Nouveau spot</a>
+		</button>
+		<table class="table table-light table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>Id</th>
-					<th>Slug</th>
 					<th>Name</th>
 					<th>Place</th>
-					<th>CreatedAt</th>
-					<th>UpdatedAt</th>
 					<th>actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for spot in spots %}
 					<tr>
-						<td>{{ spot.id }}</td>
-						<td>{{ spot.slug }}</td>
 						<td>{{ spot.name }}</td>
 						<td>{{ spot.place }}</td>
-						<td>{{ spot.createdAt ? spot.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-						<td>{{ spot.updatedAt ? spot.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>
-							<a href="{{ path('app_backoffice_spot_show', {'id': spot.id}) }}">show</a>
-							<a href="{{ path('app_backoffice_spot_edit', {'id': spot.id}) }}">edit</a>
+							<button type="button" class="btn btn-info">
+								<a href="{{ path('app_backoffice_spot_show', {'id': spot.id}) }}">info</a>
+							</button>
+							<button type="button" class="btn btn-danger">
+								<a href="{{ path('app_backoffice_spot_edit', {'id': spot.id}) }}">Modifier</a>
+							</button>
 						</td>
 					</tr>
 				{% else %}
@@ -41,6 +43,4 @@
 				{% endfor %}
 			</tbody>
 		</table>
-
-		<a href="{{ path('app_backoffice_spot_new') }}">Create new</a>
 	{% endblock %}

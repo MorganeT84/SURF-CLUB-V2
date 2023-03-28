@@ -1,14 +1,16 @@
 {% extends 'Backoffice/baseBackoffice.html.twig' %}
 
-{% block title %}New Level
+{% block title %}Création d'un nouveau niveau
 {% endblock %}
 
 {% block body %}
 
 	<div class="main">
-		<h1>Create new Level</h1>
+		<h1>Création d'un nouveau niveau</h1>
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_level_index') }}">Retour à la liste</a>
+		</button>
 
 		{{ include('Backoffice/level/_form.html.twig') }}
 
-		<a href="{{ path('app_backoffice_level_index') }}">back to list</a>
 	{% endblock %}

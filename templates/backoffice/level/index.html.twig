@@ -1,31 +1,38 @@
 {% extends 'Backoffice/baseBackoffice.html.twig' %}
 
-{% block title %}Level index
+{% block title %}Liste des niveaux
 {% endblock %}
 
 {% block body %}
 
 	<div class="main">
-		<h1>Level index</h1>
+		<h1>Liste des niveaux</h1>
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_session_index') }}">Retour Session</a>
+		</button>
 
-		<table class="table">
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_level_new') }}">Nouveau niveau</a>
+		</button>
+
+		<table class="table table-light table-bordered table-hover">
 			<thead>
-				<tr> 
+				<tr>
 					<th>Name</th>
-					<th>CreatedAt</th>
-					<th>UpdatedAt</th>
 					<th>actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for level in levels %}
-					<tr> 
+					<tr>
 						<td>{{ level.name }}</td>
-						<td>{{ level.createdAt ? level.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-						<td>{{ level.updatedAt ? level.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>
-							<a href="{{ path('app_backoffice_level_show', {'id': level.id}) }}">show</a>
-							<a href="{{ path('app_backoffice_level_edit', {'id': level.id}) }}">edit</a>
+							<button type="button" class="btn btn-info">
+								<a href="{{ path('app_backoffice_level_show', {'id': level.id}) }}">Info</a>
+							</button>
+							<button type="button" class="btn btn-danger">
+								<a href="{{ path('app_backoffice_level_edit', {'id': level.id}) }}">Modifier</a>
+							</button>
 						</td>
 					</tr>
 				{% else %}
@@ -36,5 +43,4 @@
 			</tbody>
 		</table>
 
-		<a href="{{ path('app_backoffice_level_new') }}">Create new</a>
 	{% endblock %}

@@ -1,34 +1,32 @@
 {% extends 'Backoffice/baseBackoffice.html.twig' %}
 
-{% block title %}Category
+{% block title %}Discipline
 {% endblock %}
 
 {% block body %}
 
 	<div class="main">
-		<h1>Category</h1>
+		<h1>Discipline</h1>
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_session_index') }}">Retour Session</a>
+		</button>
 
-		<table class="table">
+		<button type="button" class="btn btn-warning">
+			<a href="{{ path('app_backoffice_category_new') }}">Nouvelle discipline</a>
+		</button>
+
+		<table class="table table-light table-bordered table-hover">
 			<tbody>
-			 
+
 				<tr>
-					<th>Name</th>
+					<th>Nom</th>
 					<td>{{ category.name }}</td>
-				</tr>
-				<tr>
-					<th>CreatedAt</th>
-					<td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-				</tr>
-				<tr>
-					<th>UpdatedAt</th>
-					<td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 				</tr>
 			</tbody>
 		</table>
 
-		<a href="{{ path('app_backoffice_category_index') }}">back to list</a>
-
-		<a href="{{ path('app_backoffice_category_edit', {'id': category.id}) }}">edit</a>
-
+		<button type="button" class="btn btn-danger">
+			<a href="{{ path('app_backoffice_category_edit', {'id': category.id}) }}">Modifier</a>
+		</button>
 		{{ include('Backoffice/category/_delete_form.html.twig') }}
 	{% endblock %}

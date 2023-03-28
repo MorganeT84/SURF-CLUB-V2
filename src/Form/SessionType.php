@@ -44,7 +44,7 @@ class SessionType extends AbstractType
             ->add('picture')
             ->add('numberOfPlace', ChoiceType::class, [
                 'label' => 'Nombre de participants',
-                'choices' => range(1, 10, 0.5),
+                'choices' => range(0, 20),
             ])
             ->add('level', EntityType::class, [
                 'class' => Level::class,
